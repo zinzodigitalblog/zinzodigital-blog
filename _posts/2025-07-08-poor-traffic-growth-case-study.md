@@ -1,6 +1,8 @@
 ---
+---
 layout: single
 title: "From Invisible to Influential: How Zinzo Digital Rescued a Struggling Website"
+date: 2025-07-08 10:00:00 +0530
 subtitle: "Real-world digital growth story with SEO + Ads"
 excerpt: "A frustrated business owner saw zero website traffic and no leads. Here's how Zinzo Digital turned things around using targeted SEO and online advertising."
 author: Zinzo Digital
