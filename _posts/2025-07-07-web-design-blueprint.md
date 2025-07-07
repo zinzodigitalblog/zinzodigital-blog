@@ -11,6 +11,8 @@ description: Learn how web design impacts SEO, conversions, and user experience.
 
 Your website is often the first impression your business makes. A poorly designed site can drive visitors away in seconds. But great web design builds trust, improves SEO, and increases conversions. Here’s why web design isn’t just about looking good — it's about results.
 
+![Web design layout shown on desktop, tablet, and mobile devices](/assets/images/web-design-mockup.png)
+
 ## First Impressions Happen Fast
 
 Users form an opinion about your site in **under 1 second**. That snap judgment decides whether they stay or bounce.
