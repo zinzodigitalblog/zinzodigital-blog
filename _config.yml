@@ -160,9 +160,7 @@ footer:
     - label: "YouTube"
       icon: "fab fa-youtube"
       url: "https://youtube.com/@zinzodigital"
-    - label: "GitHub"
-      icon: "fab fa-github"
-      url: "https://github.com/zinzodigitalblog"
+
 
 
 # Reading Files
