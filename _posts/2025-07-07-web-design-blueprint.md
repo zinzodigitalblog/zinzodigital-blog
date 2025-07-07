@@ -12,12 +12,12 @@ toc: true
 toc_label: "Contents"
 toc_icon: "laptop-code"
 header:
-  overlay_image: /assets/images/web-design-mockup.png
+  overlay_image: /assets/images/web-design-social-card.png
   overlay_filter: "0.4"
-  caption: "A visual mockup of responsive web design across devices"
+  caption: "Zinzo Digital – Why Great Web Design Matters"
   actions:
-    - label: "Email Us for Free Audit"
-      url: "mailto:contact@zinzodigital.com"
+    - label: "Email Us"
+      url: "mailto:services@zinzodigital.com"
       icon: "fas fa-envelope"
 categories: [Web Design]
 tags: [SEO, UX, Web Development, Design]
@@ -120,4 +120,4 @@ Web design is your digital storefront. Investing in a clean, responsive, SEO-fri
 ---
 
 Need help building your dream site?  
-📧 [Email Zinzo Digital](mailto:contact@zinzodigital.com) – Let's bring your vision to life.
+📧 [Email Zinzo Digital](mailto:services@zinzodigital.com) – Let's bring your vision to life.
