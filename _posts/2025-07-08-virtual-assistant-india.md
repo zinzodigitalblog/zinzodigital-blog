@@ -25,7 +25,7 @@ categories: [Virtual Assistant]
 tags: [VA, Outsourcing, Business Growth, India]
 ---
 
-![Top Virtual Assistant Services from India](../assets/images/zinzo-virtual-assistant-hero.png)
+![Top Virtual Assistant Services from India](/assets/images/zinzo-virtual-assistant-hero.png)
 
 Running a business is demanding — and handling every little task yourself can slow you down. That’s why thousands of entrepreneurs and teams worldwide are hiring **virtual assistants from India** to lighten the load and focus on what matters most.
 
