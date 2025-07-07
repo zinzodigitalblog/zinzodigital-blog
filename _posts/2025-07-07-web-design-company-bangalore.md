@@ -100,7 +100,7 @@ Zinzo Digital serves all major Bangalore tech and business hubs:
   </a>
 </div>
 
-🔗 [Visit Our Bangalore Web Design Page](https://www.zinzodigital.com/website-design-bangalore.html)
+🔗 [Visit Our Bangalore Web Design Page](https://www.zinzodigital.com/web-design-bangalore.html)
 
 ---
 
