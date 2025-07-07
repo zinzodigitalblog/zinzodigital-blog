@@ -17,7 +17,7 @@ header:
   caption: "Hire Professional Virtual Assistants from India – Zinzo Digital"
   actions:
     - label: "Hire Now"
-      url: "https://www.zinzodigital.com/virtual-assistant-services/"
+      url: "https://www.zinzodigital.com/virtual-assistant-services.html"
       icon: "fas fa-user-clock"
 categories: [Virtual Assistant]
 tags: [VA, Outsourcing, Business Growth, India]
@@ -81,7 +81,7 @@ We’re not a freelancer site. We are a **dedicated partner** for your growth:
 - ✅ Transparent pricing  
 - ✅ Managed team with accountability
 
-👉 [Check full service details](https://www.zinzodigital.com/virtual-assistant-services/)
+👉 [Check full service details](https://www.zinzodigital.com/virtual-assistant-services.html)
 
 ---
 
@@ -93,9 +93,3 @@ Whether you're a solo founder, small business, or agency — **Zinzo Digital** i
 🔗 Or visit [zinzodigital.com](https://www.zinzodigital.com/)
 
 ---
-
-## 📌 Quick Links
-
-- 🔗 [Our Services](https://www.zinzodigital.com/services/)  
-- 🔗 [Virtual Assistant Plans](https://www.zinzodigital.com/virtual-assistant-services/)  
-- 🔗 [Success Stories](https://www.zinzodigital.com/case-studies/)  
