@@ -23,7 +23,7 @@ categories: [Digital Marketing]
 tags: [Chennai, Real Estate, Travel, Local SEO, PPC]
 ---
 
-![Digital Marketing for Chennai Businesses](../assets/images/zinzo-digital-marketing-chennai-banner.png)
+![Digital Marketing for Chennai Businesses](/assets/images/zinzo-digital-marketing-chennai-banner.png)
 
 ## 🌆 Why Digital Marketing Matters in Chennai
 
