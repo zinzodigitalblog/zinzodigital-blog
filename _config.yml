@@ -10,9 +10,11 @@
 # Review documentation to determine if you should use `theme` or `remote_theme`
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
-# theme                  : "minimal-mistakes-jekyll"
-# remote_theme           : "mmistakes/minimal-mistakes"
+# theme: "minimal-mistakes-jekyll"
+remote_theme: "mmistakes/minimal-mistakes"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
+
 
 # Site Settings
 locale                   : "en-US"
@@ -99,16 +101,21 @@ og_image                 : # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type: Organization
+  name: Zinzo Digital
+  links:
+    - "https://facebook.com/zinzodigital"
+    - "https://instagram.com/zinzodigital"
+    - "https://linkedin.com/in/anbumanis"
+    - "https://youtube.com/@zinzodigital"
+    - "https://github.com/zinzodigitalblog"
+    
 
 # Analytics
 analytics:
-  provider               : # false (default), "google", "google-universal", "google-gtag", "custom"
+  provider: "google-gtag"
   google:
-    tracking_id          :
-    anonymize_ip         : # true, false (default)
+    tracking_id: "G-NVQ0K3QSYX" # replace with your real ID
 
 
 # Site Author
@@ -143,19 +150,19 @@ footer:
   links:
     - label: "Instagram"
       icon: "fab fa-instagram"
-      # url: "https://instagram.com/zinzodigital"
+      url: "https://instagram.com/zinzodigital"
     - label: "Facebook"
       icon: "fab fa-facebook"
-      # url: "https://facebook.com/zinzodigital"
+      url: "https://facebook.com/zinzodigital"
     - label: "LinkedIn"
       icon: "fab fa-linkedin"
-      # url: "https://linkedin.com/in/anbumanis"
+      url: "https://linkedin.com/in/anbumanis"
     - label: "YouTube"
       icon: "fab fa-youtube"
-      # url: "https://youtube.com/@zinzodigital"
+      url: "https://youtube.com/@zinzodigital"
     - label: "GitHub"
       icon: "fab fa-github"
-      # url: "https://github.com/zinzodigitalblog"
+      url: "https://github.com/zinzodigitalblog"
 
 
 # Reading Files
@@ -260,6 +267,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
+  - jekyll-seo-tag
   - jekyll-include-cache
 
 # mimic GitHub Pages with --safe
