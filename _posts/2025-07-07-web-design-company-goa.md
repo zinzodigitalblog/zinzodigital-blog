@@ -106,7 +106,7 @@ Whether you're on the coast or inland, we’ve got you covered!
   </a>
 </div>
 
-🔗 [Visit Our Goa Web Design Page](https://www.zinzodigital.com/web-design-goa.html)
+🔗 [Visit Our Goa Web Design Page](https://www.zinzodigital.com/website-design-goa.html)
 
 ---
 
