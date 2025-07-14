@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://blog.zinzodigital.com/sitemap.xml
