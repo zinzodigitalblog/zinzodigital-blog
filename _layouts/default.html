@@ -17,6 +17,15 @@
 
   gtag('config', 'G-NVQ0K3QSYX');
 </script>
+
+<!-- Google tag (gtag.js) -->
+{% if page.schema and page.schema_json %}
+<script type="application/ld+json">
+{{ page.schema_json | strip }}
+</script>
+{% endif %}
+
+    
 	
   </head>
 
