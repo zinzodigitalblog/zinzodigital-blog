@@ -18,15 +18,13 @@
   gtag('config', 'G-NVQ0K3QSYX');
 </script>
 
-<!-- Google tag (gtag.js) -->
+<!-- Schema -->
 {% if page.schema and page.schema_json %}
 <script type="application/ld+json">
 {{ page.schema_json | strip }}
 </script>
 {% endif %}
 
-    
-	
   </head>
 
   <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}" dir="{% if site.rtl %}rtl{% else %}ltr{% endif %}">
