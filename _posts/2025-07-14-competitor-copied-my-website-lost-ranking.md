@@ -94,8 +94,8 @@ Reinforce your page’s authority with:
 
 Here’s a basic schema you can add:
 
-schema: true
-schema_json: |
+```html
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -116,3 +116,4 @@ schema_json: |
     "https://www.facebook.com/zinzodigital"
   ]
 }
+</script>
