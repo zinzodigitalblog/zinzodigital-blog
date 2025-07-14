@@ -145,14 +145,14 @@ author:
       # url: "https://youtube.com/@zinzodigital"
     - label: "Instagram"
       icon: "fab fa-instagram"
-      # url: "https://instagram.com/zinzodigital
+      # url: "https://www.instagram.com/zinzodigital"
 
 # Site Footer
 footer:
   links:
     - label: "Instagram"
       icon: "fab fa-instagram"
-      url: "https://instagram.com/zinzodigital"
+      url: "https://www.instagram.com/zinzodigital"
     - label: "Facebook"
       icon: "fab fa-facebook"
       url: "https://facebook.com/zinzodigital"
