@@ -133,8 +133,8 @@ Google loves **fresh content + local intent.**
 
 ## 🧩 Add Local Schema Markup to Rebuild Relevance
 
-```html
-<script type="application/ld+json">
+schema: true
+schema_json: |
 {
   "@context": "https://schema.org",
   "@type": "Florist",
@@ -156,4 +156,3 @@ Google loves **fresh content + local intent.**
     "https://www.youtube.com/v/@ZinzoDigital"
   ]
 }
-</script>
