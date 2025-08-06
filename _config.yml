@@ -200,6 +200,8 @@ compress_html:
   ignore:
     envs: development
 
+# Rebuild blog on Aug 6
+
 # Defaults
 defaults:
   - scope:
