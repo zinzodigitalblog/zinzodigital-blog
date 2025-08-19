@@ -1,4 +1,4 @@
-<div class="floating-share" id="floatingShare">
+<div class="share-floating">
   <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
   <a class="share-instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
   <a class="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
@@ -7,43 +7,45 @@
 </div>
 
 <style>
-.floating-share {
+.share-floating {
   position: fixed;
-  top: 50%;
+  top: 40%;
   right: 0;
-  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.7);
+  padding: 12px 8px;
   border-radius: 12px 0 0 12px;
-  transition: opacity 0.6s ease-in-out;
   z-index: 9999;
+  transition: transform 0.5s ease-in-out;
 }
 
-.floating-share a {
-  color: white;
+.share-floating a {
+  color: #fff;
   font-size: 20px;
   text-align: center;
-  transition: transform 0.3s;
+  transition: color 0.3s;
 }
 
-.floating-share a:hover {
-  transform: scale(1.2);
-  color: #ffcc00;
+.share-floating a:hover {
+  color: #1da1f2;
+}
+
+.share-floating.hide {
+  transform: translateX(120%);
 }
 </style>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const shareBox = document.getElementById("floatingShare");
+document.addEventListener("DOMContentLoaded", function () {
+  const shareBar = document.querySelector(".share-floating");
 
-  function toggleShare() {
-    shareBox.style.opacity = (shareBox.style.opacity === "0") ? "1" : "0";
+  function toggleShareBar() {
+    shareBar.classList.toggle("hide");
   }
 
-  // Start toggling every 2 seconds
-  setInterval(toggleShare, 2000);
+  // First show for 10s, then hide for 10s, repeat
+  setInterval(toggleShareBar, 10000);
 });
 </script>
