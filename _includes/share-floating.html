@@ -1,51 +1,84 @@
-<div class="share-floating">
-  <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-  <a class="share-instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a class="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-  <a class="share-whatsapp" href="https://wa.me/?text={{ page.title }}%20{{ page.url | absolute_url }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a class="share-tiktok" href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
-</div>
-
+<!-- Floating Social Share Buttons -->
 <style>
-.share-floating {
+.floating-share {
   position: fixed;
   top: 40%;
-  right: 0;
+  right: -60px; /* hidden */
   display: flex;
   flex-direction: column;
   gap: 12px;
-  background: rgba(0,0,0,0.7);
-  padding: 12px 8px;
-  border-radius: 12px 0 0 12px;
   z-index: 9999;
-  transition: transform 0.5s ease-in-out;
+  transition: right 0.6s ease;
 }
 
-.share-floating a {
+.floating-share.show {
+  right: 10px; /* visible */
+}
+
+.floating-share a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
   color: #fff;
   font-size: 20px;
-  text-align: center;
-  transition: color 0.3s;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
 }
 
-.share-floating a:hover {
-  color: #1da1f2;
-}
-
-.share-floating.hide {
-  transform: translateX(120%);
-}
+.share-facebook { background: #1877f2; }
+.share-instagram { background: #e1306c; }
+.share-linkedin { background: #0a66c2; }
+.share-whatsapp { background: #25d366; }
+.share-tiktok { background: #000000; }
 </style>
 
+<div class="floating-share" id="floatingShare">
+  <!-- Facebook App Share -->
+  <a class="share-facebook" href="fb://facewebmodal/f?href=https://www.zinzodigital.com" target="_blank">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <!-- Instagram App (profile redirect since IG has no direct web share intent) -->
+  <a class="share-instagram" href="instagram://share?text=Check%20this%20out%20https://www.zinzodigital.com" target="_blank">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- LinkedIn App Share -->
+  <a class="share-linkedin" href="linkedin://shareArticle?mini=true&url=https://www.zinzodigital.com&title=Zinzo%20Digital" target="_blank">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+
+  <!-- WhatsApp App Share -->
+  <a class="share-whatsapp" href="whatsapp://send?text=Check%20this%20amazing%20site:%20https://www.zinzodigital.com" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- TikTok (opens profile, TikTok doesn’t allow direct web share intent) -->
+  <a class="share-tiktok" href="snssdk1233://user/profile/123456789" target="_blank">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const shareBar = document.querySelector(".share-floating");
+// Floating show/hide cycle (10s show, 10s hide)
+const shareBar = document.getElementById('floatingShare');
+let visible = true;
 
-  function toggleShareBar() {
-    shareBar.classList.toggle("hide");
+function toggleShareBar() {
+  visible = !visible;
+  if (visible) {
+    shareBar.classList.add('show');
+  } else {
+    shareBar.classList.remove('show');
   }
+}
 
-  // First show for 10s, then hide for 10s, repeat
-  setInterval(toggleShareBar, 10000);
-});
+shareBar.classList.add('show'); // Show first
+setInterval(toggleShareBar, 10000); // toggle every 10s
 </script>
+
+<!-- FontAwesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
