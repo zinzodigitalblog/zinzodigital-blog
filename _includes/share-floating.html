@@ -1,39 +1,49 @@
-<div class="share-floating">
+<div class="floating-share" id="floatingShare">
   <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-  <a class="share-twitter" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a class="share-instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
   <a class="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
   <a class="share-whatsapp" href="https://wa.me/?text={{ page.title }}%20{{ page.url | absolute_url }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
-  <a class="share-instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-  <a class="share-pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&media=&description={{ page.title }}" target="_blank"><i class="fab fa-pinterest-p"></i></a>
-  <a class="share-reddit" href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank"><i class="fab fa-reddit-alien"></i></a>
   <a class="share-tiktok" href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
 </div>
 
 <style>
-.share-floating {
+.floating-share {
   position: fixed;
-  top: 40%;
-  left: 0;
+  top: 50%;
+  right: 0;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 12px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px 0 0 12px;
+  transition: opacity 0.6s ease-in-out;
   z-index: 9999;
 }
-.share-floating a {
-  background: #003393;
-  color: #fff;
-  padding: 10px;
-  border-radius: 50%;
+
+.floating-share a {
+  color: white;
+  font-size: 20px;
   text-align: center;
-  font-size: 18px;
-  transition: 0.3s;
+  transition: transform 0.3s;
 }
-.share-floating a:hover {
-  background: #d35400;
-  transform: scale(1.1);
+
+.floating-share a:hover {
+  transform: scale(1.2);
+  color: #ffcc00;
 }
 </style>
 
-<!-- Load Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const shareBox = document.getElementById("floatingShare");
+
+  function toggleShare() {
+    shareBox.style.opacity = (shareBox.style.opacity === "0") ? "1" : "0";
+  }
+
+  // Start toggling every 2 seconds
+  setInterval(toggleShare, 2000);
+});
+</script>
