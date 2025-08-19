@@ -1,20 +1,70 @@
-<div class="floating-share">
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="nofollow noopener noreferrer" title="Share on Facebook">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+<!-- Floating Share Buttons -->
+<style>
+.share-floating {
+  position: fixed;
+  top: 40%;
+  right: 15px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.share-floating a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.share-floating a:hover {
+  transform: scale(1.1);
+}
+
+.share-floating .facebook { background: #1877f2; }
+.share-floating .twitter  { background: #1da1f2; }
+.share-floating .linkedin { background: #0077b5; }
+.share-floating .whatsapp { background: #25d366; }
+.share-floating .tiktok   { background: #000000; }
+</style>
+
+<div class="share-floating">
+  <!-- Facebook -->
+  <a class="facebook" target="_blank" 
+     href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}">
+     <i class="fab fa-facebook-f"></i>
   </a>
-  <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" rel="nofollow noopener noreferrer" title="Share on X">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" alt="X (Twitter)">
+
+  <!-- Twitter / X -->
+  <a class="twitter" target="_blank" 
+     href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}">
+     <i class="fab fa-twitter"></i>
   </a>
-  <a href="https://wa.me/?text={{ page.title }}%20{{ page.url | absolute_url }}" target="_blank" rel="nofollow noopener noreferrer" title="Share on WhatsApp">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp">
+
+  <!-- LinkedIn -->
+  <a class="linkedin" target="_blank" 
+     href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}">
+     <i class="fab fa-linkedin-in"></i>
   </a>
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="nofollow noopener noreferrer" title="Share on LinkedIn">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+
+  <!-- WhatsApp -->
+  <a class="whatsapp" target="_blank" 
+     href="https://wa.me/?text={{ page.title }}%20{{ page.url | absolute_url }}">
+     <i class="fab fa-whatsapp"></i>
   </a>
-  <a href="https://www.tiktok.com/share?url={{ page.url | absolute_url }}" target="_blank" rel="nofollow noopener noreferrer" title="Share on TikTok">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" alt="TikTok">
-  </a>
-  <a href="https://t.me/share/url?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" rel="nofollow noopener noreferrer" title="Share on Telegram">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" alt="Telegram">
+
+  <!-- TikTok (no native share, so just profile/share page) -->
+  <a class="tiktok" target="_blank" 
+     href="https://www.tiktok.com/upload?lang=en&u={{ page.url | absolute_url }}">
+     <i class="fab fa-tiktok"></i>
   </a>
 </div>
+
+<!-- Font Awesome (for social icons) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
