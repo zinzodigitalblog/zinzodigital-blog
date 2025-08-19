@@ -1,194 +1,52 @@
-<!-- Floating Social Share (Right Side) -->
-<style>
-  .share-floating {
-    position: fixed;
-    top: 40%;
-    right: -64px; /* hidden off-screen */
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 9999;
-    transition: right 0.6s ease;
-  }
-  .share-floating.show { right: 10px; }
-
-  .share-floating button,
-  .share-floating a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    color: #fff;
-    font-size: 20px;
-    border: 0;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,.2);
-  }
-  .share-floating button:hover,
-  .share-floating a:hover { transform: scale(1.08); }
-
-  .share-facebook { background: #1877f2; }
-  .share-instagram { background: #e4405f; }
-  .share-linkedin { background: #0a66c2; }
-  .share-whatsapp { background: #25d366; }
-  .share-tiktok { background: #000; }
-</style>
-
-<div class="share-floating" id="shareFloating" aria-label="Share this page">
-  <!-- Use buttons so we can prefer Web Share API; fall back with anchors as needed -->
-  <button class="share-whatsapp" aria-label="Share on WhatsApp" title="WhatsApp" onclick="shareTo('whatsapp')">
-    <i class="fab fa-whatsapp"></i>
-  </button>
-
-  <button class="share-instagram" aria-label="Share on Instagram" title="Instagram" onclick="shareTo('instagram')">
-    <i class="fab fa-instagram"></i>
-  </button>
-
-  <button class="share-tiktok" aria-label="Share on TikTok" title="TikTok" onclick="shareTo('tiktok')">
-    <i class="fab fa-tiktok"></i>
-  </button>
-
-  <button class="share-facebook" aria-label="Share on Facebook" title="Facebook" onclick="shareTo('facebook')">
-    <i class="fab fa-facebook-f"></i>
-  </button>
-
-  <button class="share-linkedin" aria-label="Share on LinkedIn" title="LinkedIn" onclick="shareTo('linkedin')">
-    <i class="fab fa-linkedin-in"></i>
-  </button>
+<!-- Floating Social Share Bar -->
+<div id="share-bar">
+  <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">📘</a>
+  <a href="https://api.whatsapp.com/send?text={{ page.title }}%20{{ page.url | absolute_url }}" target="_blank" title="Share on WhatsApp">💬</a>
+  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" title="Share on LinkedIn">💼</a>
+  <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" title="Share on Twitter">🐦</a>
+  <a href="#" onclick="copyLink()" title="Copy Link (For Instagram/TikTok)">🔗</a>
 </div>
 
+<style>
+#share-bar {
+  position: fixed;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 9999;
+}
+
+#share-bar a {
+  background: #003393;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+#share-bar a:hover {
+  background: #1a73e8;
+}
+</style>
+
 <script>
-  // --- Auto show/hide: show 10s, hide 10s, repeat ---
-  (function autoToggleShareBar() {
-    const bar = document.getElementById('shareFloating');
-    bar.classList.add('show'); // visible on load
-    setInterval(() => { bar.classList.toggle('show'); }, 10000);
-  })();
-
-  // --- Share helpers ---
-  function isMobile() {
-    return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  }
-
-  function pageShareData() {
-    const title = (document.querySelector('meta[property="og:title"]')?.content
-                || document.title || 'Check this out');
-    const text  = (document.querySelector('meta[name="description"]')?.content
-                || document.querySelector('meta[property="og:description"]')?.content
-                || title);
-    const url   = (document.querySelector('link[rel="canonical"]')?.href
-                || window.location.href);
-    return { title, text, url };
-  }
-
-  async function tryWebShare() {
-    const data = pageShareData();
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: data.title, text: data.text, url: data.url });
-        return true; // native share sheet opened
-      } catch (e) {
-        // user canceled or share failed; fall through to fallback
-      }
-    }
-    return false;
-  }
-
-  function shareTo(target) {
-    const { title, text, url } = pageShareData();
-
-    // For Instagram and TikTok there is NO supported URL-scheme to prefill a link.
-    // Best UX is to use the Web Share API to let users pick the app from native sheet.
-    // On desktop/fallback, we copy the link so users can paste into the app.
-    const openOrCopy = async (fallbackUrl) => {
-      // Try native share first (covers WhatsApp/IG/TikTok/FB/LinkedIn on mobile)
-      const usedNative = await tryWebShare();
-      if (usedNative) return;
-
-      // No Web Share (desktop or unsupported): go to fallback if provided
-      if (fallbackUrl) {
-        window.open(fallbackUrl, '_blank', 'noopener');
-        return;
-      }
-
-      // As a last resort (IG/TikTok on desktop), copy the link
-      copyLink(url);
-      toast('Link copied. Open the app and paste.');
-    };
-
-    switch (target) {
-      case 'whatsapp': {
-        // Deep link for mobile; graceful fallback for desktop
-        if (isMobile()) {
-          window.location.href = `whatsapp://send?text=${encodeURIComponent(`${title} - ${url}`)}`;
-        } else {
-          openOrCopy(`https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`);
-        }
-        break;
-      }
-
-      case 'facebook': {
-        // Facebook prefers their share dialog on web; on mobile, Web Share handles the app
-        openOrCopy(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`);
-        break;
-      }
-
-      case 'linkedin': {
-        openOrCopy(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`);
-        break;
-      }
-
-      case 'instagram': {
-        // No official share-to-feed/story via URL. Use native share when available, else copy.
-        openOrCopy(null);
-        break;
-      }
-
-      case 'tiktok': {
-        // No official public share-deeplink. Use native share when available, else copy.
-        openOrCopy(null);
-        break;
-      }
-    }
-  }
-
-  function copyLink(link) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(link).catch(()=>fallbackPrompt(link));
-    } else {
-      fallbackPrompt(link);
-    }
-  }
-
-  function fallbackPrompt(link) {
-    const tmp = document.createElement('textarea');
-    tmp.value = link;
-    document.body.appendChild(tmp);
-    tmp.select();
-    document.execCommand('copy');
-    document.body.removeChild(tmp);
-  }
-
-  // lightweight toast
-  function toast(msg) {
-    const el = document.createElement('div');
-    el.textContent = msg;
-    el.style.position = 'fixed';
-    el.style.bottom = '20px';
-    el.style.right = '20px';
-    el.style.padding = '10px 14px';
-    el.style.background = 'rgba(0,0,0,.8)';
-    el.style.color = '#fff';
-    el.style.borderRadius = '8px';
-    el.style.zIndex = 10000;
-    el.style.fontSize = '14px';
-    document.body.appendChild(el);
-    setTimeout(()=>{ el.remove(); }, 2200);
-  }
+function copyLink() {
+  const dummy = document.createElement("input");
+  const text = window.location.href;
+  document.body.appendChild(dummy);
+  dummy.value = text;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+  alert("Link copied! Now paste into Instagram or TikTok.");
+}
 </script>
-
-<!-- Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
