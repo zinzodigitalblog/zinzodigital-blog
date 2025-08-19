@@ -1,70 +1,39 @@
-<!-- Floating Share Buttons -->
+<div class="share-floating">
+  <a class="share-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+  <a class="share-twitter" href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank"><i class="fab fa-twitter"></i></a>
+  <a class="share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  <a class="share-whatsapp" href="https://wa.me/?text={{ page.title }}%20{{ page.url | absolute_url }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <a class="share-instagram" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a class="share-pinterest" href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&media=&description={{ page.title }}" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+  <a class="share-reddit" href="https://www.reddit.com/submit?url={{ page.url | absolute_url }}&title={{ page.title }}" target="_blank"><i class="fab fa-reddit-alien"></i></a>
+  <a class="share-tiktok" href="https://www.tiktok.com/" target="_blank"><i class="fab fa-tiktok"></i></a>
+</div>
+
 <style>
 .share-floating {
   position: fixed;
   top: 40%;
-  right: 15px;
-  z-index: 1000;
+  left: 0;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  z-index: 9999;
 }
-
 .share-floating a {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #003393;
   color: #fff;
-  font-size: 22px;
-  text-decoration: none;
-  transition: transform 0.2s ease;
+  padding: 10px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 18px;
+  transition: 0.3s;
 }
-
 .share-floating a:hover {
+  background: #d35400;
   transform: scale(1.1);
 }
-
-.share-floating .facebook { background: #1877f2; }
-.share-floating .twitter  { background: #1da1f2; }
-.share-floating .linkedin { background: #0077b5; }
-.share-floating .whatsapp { background: #25d366; }
-.share-floating .tiktok   { background: #000000; }
 </style>
 
-<div class="share-floating">
-  <!-- Facebook -->
-  <a class="facebook" target="_blank" 
-     href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}">
-     <i class="fab fa-facebook-f"></i>
-  </a>
-
-  <!-- Twitter / X -->
-  <a class="twitter" target="_blank" 
-     href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}">
-     <i class="fab fa-twitter"></i>
-  </a>
-
-  <!-- LinkedIn -->
-  <a class="linkedin" target="_blank" 
-     href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}">
-     <i class="fab fa-linkedin-in"></i>
-  </a>
-
-  <!-- WhatsApp -->
-  <a class="whatsapp" target="_blank" 
-     href="https://wa.me/?text={{ page.title }}%20{{ page.url | absolute_url }}">
-     <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- TikTok (no native share, so just profile/share page) -->
-  <a class="tiktok" target="_blank" 
-     href="https://www.tiktok.com/upload?lang=en&u={{ page.url | absolute_url }}">
-     <i class="fab fa-tiktok"></i>
-  </a>
-</div>
-
-<!-- Font Awesome (for social icons) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Load Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
