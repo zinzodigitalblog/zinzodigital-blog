@@ -1,17 +1,18 @@
-<!-- Floating Social Share Bar -->
-<div id="share-bar">
-  <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" title="Share on Facebook">📘</a>
-  <a href="https://api.whatsapp.com/send?text={{ page.title }}%20{{ page.url | absolute_url }}" target="_blank" title="Share on WhatsApp">💬</a>
-  <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" title="Share on LinkedIn">💼</a>
-  <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" title="Share on Twitter">🐦</a>
-  <a href="#" onclick="copyLink()" title="Copy Link (For Instagram/TikTok)">🔗</a>
+<!-- Floating WhatsApp + Copy Link -->
+<div id="floating-share">
+  <a id="whatsapp-share" href="#" title="Share on WhatsApp">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" alt="WhatsApp" />
+  </a>
+  <a id="copy-link" href="#" title="Copy Link">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/link.svg" alt="Copy Link" />
+  </a>
 </div>
 
 <style>
-#share-bar {
+#floating-share {
   position: fixed;
   top: 50%;
-  right: 10px;
+  right: 20px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -19,34 +20,39 @@
   z-index: 9999;
 }
 
-#share-bar a {
-  background: #003393;
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
-  width: 45px;
-  height: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#floating-share a img {
+  width: 38px;
+  height: 38px;
+  background: #fff;
   border-radius: 50%;
-  transition: background 0.3s;
+  padding: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+  cursor: pointer;
 }
 
-#share-bar a:hover {
-  background: #1a73e8;
+#floating-share a img:hover {
+  transform: scale(1.15);
 }
 </style>
 
 <script>
-function copyLink() {
-  const dummy = document.createElement("input");
-  const text = window.location.href;
-  document.body.appendChild(dummy);
-  dummy.value = text;
-  dummy.select();
-  document.execCommand("copy");
-  document.body.removeChild(dummy);
-  alert("Link copied! Now paste into Instagram or TikTok.");
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const pageUrl = window.location.href;
+
+  // WhatsApp share
+  document.getElementById("whatsapp-share").addEventListener("click", function (e) {
+    e.preventDefault();
+    let whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(pageUrl);
+    window.open(whatsappUrl, "_blank");
+  });
+
+  // Copy URL
+  document.getElementById("copy-link").addEventListener("click", function (e) {
+    e.preventDefault();
+    navigator.clipboard.writeText(pageUrl).then(() => {
+      alert("🔗 Link copied to clipboard!");
+    });
+  });
+});
 </script>
