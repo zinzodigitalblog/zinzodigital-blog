@@ -213,7 +213,13 @@ defaults:
       share: true
       related: true
       
+# Exclude paginated pages from sitemap
   - scope:
-      path: "page*"
+      path: ""
+      type: pages
     values:
       sitemap: false
+
+exclude:
+  - /page/*
+  - /page*
