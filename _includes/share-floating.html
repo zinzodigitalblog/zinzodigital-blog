@@ -1,61 +1,63 @@
-<!-- Floating Social Share Buttons -->
-<div class="social-share">
-  <!-- WhatsApp Share -->
-  <a href="https://api.whatsapp.com/send?text=Check%20this%20out:%20YOUR_PAGE_URL" target="_blank" class="whatsapp" title="Share on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Copy URL -->
-  <a href="javascript:void(0)" onclick="copyURL()" class="copy" title="Copy Link">
-    <i class="fas fa-link"></i>
-  </a>
-</div>
-
-<!-- Styles -->
+<!-- share-floating.html -->
 <style>
-.social-share {
+.share-buttons {
   position: fixed;
   top: 50%;
-  right: 10px;
+  right: 15px;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  z-index: 1000;
+  z-index: 9999;
 }
 
-.social-share a {
-  width: 48px;
-  height: 48px;
-  background: #fff;
+.share-buttons a, .share-buttons button {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s, background 0.3s;
-  font-size: 22px;
+  align-items: center;
+  background: #25d366; /* WhatsApp green default */
   color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
 }
 
-.social-share a.whatsapp { background: #25D366; }
-.social-share a.copy { background: #333; }
+.share-buttons button {
+  background: #333; /* Copy button */
+}
 
-.social-share a:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
+.share-buttons a:hover, .share-buttons button:hover {
+  opacity: 0.85;
 }
 </style>
 
-<!-- FontAwesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<div class="share-buttons">
+  <!-- WhatsApp Share -->
+  <a href="https://api.whatsapp.com/send?text=Check%20this%20out:%20{{ page.url | absolute_url }}" 
+     target="_blank" 
+     rel="noopener" 
+     style="background:#25d366;">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
-<!-- Copy URL Script -->
+  <!-- Copy URL -->
+  <button onclick="copyURL()">
+    <i class="fas fa-link"></i>
+  </button>
+</div>
+
 <script>
 function copyURL() {
-  navigator.clipboard.writeText(window.location.href).then(() => {
-    alert("🔗 Link copied!");
+  const url = window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    alert("✅ Link copied to clipboard!");
   });
 }
 </script>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
