@@ -80,6 +80,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-include-cache
+  - jekyll-sitemap
 
 whitelist:
   - jekyll-paginate
@@ -211,3 +212,8 @@ defaults:
       read_time: true
       share: true
       related: true
+      
+  - scope:
+      path: "page*"
+    values:
+      sitemap: false
